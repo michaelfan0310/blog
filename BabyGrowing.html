@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> "Baby Growing Up"</title>
+    </head>
+    <body>
+
+        <style>
+
+     body {background-color: rgba(194, 114, 9, 0.582);}
+    h1 { color: blue;      }
+
+
+        </style>
+
+    <h1>Baby Growing Up</h1>
+    
+    <form id="baby-form">
+        <label>
+            Time:
+            <select name="ages">
+                <option value="firstday">FirstDay Arrive</option>
+                <option value="secondday">Second Day</option>
+                <option value="oneweek">One Week</option>
+                <option value="4yearsold">4 Years Old</option>
+                <option value="4yearsold2">4-1/2 Years Old  </option>
+            </select>
+        </label>
+        <button type="submit">View</button>
+    </form>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    //  image URLs
+    var babyImages = {
+        "firstday": "newBirth.JPG",
+        "secondday": "secondDay.jpg",
+        "oneweek": "oneweek.jpg",
+        "4yearsold": "4yearsold.jpg",
+        "4yearsold2": "4yearsOld2.jpg"
+    };
+    
+    // When the user submits the form,
+    //   Check what species they ordered
+    //   and display an image of it
+    
+    $("#baby-form").on("submit", function(event) {
+        event.preventDefault();
+        var $babyPhotos = $(this).find("[name=ages]"); // scoped
+        var babyPhotos = $babyPhotos.val();
+        var $img = $("<img>");
+        $img.width(300);
+        $img.attr("src", babyImages[babyPhotos]); 
+        $img.appendTo("body");
+        
+    });
+    </script>
+    </body>
+</html>
